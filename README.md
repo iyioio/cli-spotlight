@@ -6,7 +6,7 @@ A simple cli based Spotlight search replacement
 
 ## Examples
 
-This example will search for apps to open Applications and Utilities and search for folders to open
+This example searches for apps to open in Applications and Utilities and folders to open
 with vscode
 ``` sh
 ./cli-spotlight.sh \
@@ -25,6 +25,22 @@ This example is the same as the above example except a popup window is opened to
     '/Applications/Utilities/*.app' \
     '/System/Applications/Utilities/*.app' \
     'code:~/projects/*'
+```
+
+
+<br/><br/>
+
+## Custom open commands
+By default cli-spotlight opens selected path using the open command. You can use a custom command
+by prefixing search paths with the name of the command you would like to open results with.
+
+``` sh
+
+## Open with VSCode
+./cli-spotlight.sh 'code:~/projects/*'
+
+## Open with TextMate
+./cli-spotlight.sh 'mate:~/projects/*'
 ```
 
 <br/><br/>
