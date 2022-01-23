@@ -43,6 +43,31 @@ by prefixing search paths with the name of the command you would like to open re
 ./cli-spotlight.sh 'mate:~/projects/*'
 ```
 
+
+<br/><br/>
+
+## Replace MacOS Spotlight Search ( cmd+space )
+Using skhd and the key mapping below us can replace the built in Spotlight search with the 
+cli-spotlight popup.
+
+``` txt
+# skhd (cmd+space) key mapping
+
+cmd - space : [path to cli-spotlight folder]/popup-cli-spotlight.sh \
+                    '/Applications/*.app' \
+                    '/System/Applications/*.app' \
+                    '/Applications/Utilities/*.app' \
+                    '/System/Applications/Utilities/*.app' \
+                    'code:~/docs/*'
+```
+
+I also recommend disabling spotlight indexing
+``` sh
+sudo mdutil -i off
+```
+
+skhd - https://github.com/koekeishiya/skhd
+
 <br/><br/>
 
 ## dependencies
