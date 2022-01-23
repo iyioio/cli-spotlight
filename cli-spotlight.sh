@@ -50,5 +50,3 @@ else
     echo "open \"$option\""
     open "$option"
 fi
-
-sleep 5
