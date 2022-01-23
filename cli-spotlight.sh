@@ -37,11 +37,18 @@ if [ "$count" -eq "2" ]; then
     cmd=$(echo "$parts" | head -1)
     cmd=$(echo "$cmd" | sed 's/\[//1')
     argPath=$(echo "$parts" | tail -n1)
-    
-    echo "base -c \"$cmd '$argPath'\""
-    bash -c "$cmd '$argPath'"
+
+    if [ "$cmd" == "shell" ]; then
+        echo "base -c \"$argPath\""
+        bash -c "$argPath"
+    else
+        echo "base -c \"$cmd '$argPath'\""
+        bash -c "$cmd '$argPath'"
+    fi
     
 else
     echo "open \"$option\""
     open "$option"
 fi
+
+sleep 5

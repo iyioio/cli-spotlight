@@ -46,6 +46,18 @@ by prefixing search paths with the name of the command you would like to open re
 
 <br/><br/>
 
+## Shell commands
+Shell commands can be ran using the shell prefix.
+
+The example assumes ~/scripts is a directory containing shell scripts. When a result is selected
+the result will be executed as a script instead of being opened as a file.
+``` sh
+./cli-spotlight.sh 'shell:~/scripts/*.sh'
+```
+
+
+<br/><br/>
+
 ## Replace MacOS Spotlight Search ( cmd+space )
 Using skhd and the key mapping below us can replace the built in Spotlight search with the 
 cli-spotlight popup.
