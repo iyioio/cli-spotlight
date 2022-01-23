@@ -37,7 +37,7 @@ brew install fzf
 ```
 
 
-- Alacritty ( optional ) - used to layout console window search appears in
+- Alacritty ( optional ) - used for popup window
 ``` sh
 brew install --cask alacritty
 ```
