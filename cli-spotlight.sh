@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 list=""
 
 for var in "$@"
@@ -19,7 +18,7 @@ do
         files=$(echo "$files" | sed s/^/[$cmd]\ /g)
     fi
     
-    list+=$files
+    list+=$'\n'+$files
     
 done
 
@@ -39,11 +38,11 @@ if [ "$count" -eq "2" ]; then
     argPath=$(echo "$parts" | tail -n1)
 
     if [ "$cmd" == "shell" ]; then
-        echo "base -c \"$argPath\""
-        bash -c "$argPath"
+        echo "bash --login -c \"$argPath\""
+        bash --login -c "$argPath"
     else
-        echo "base -c \"$cmd '$argPath'\""
-        bash -c "$cmd '$argPath'"
+        echo "bash --login -c \"$cmd '$argPath'\""
+        bash --login -c "$cmd '$argPath'"
     fi
     
 else
