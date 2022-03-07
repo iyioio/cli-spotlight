@@ -18,7 +18,7 @@ do
         files=$(echo "$files" | sed s/^/[$cmd]\ /g)
     fi
     
-    list+=$'\n'+$files
+    list+=$'\n'$files
     
 done
 
