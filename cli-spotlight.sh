@@ -11,9 +11,18 @@ do
 
     searchDir=$(echo "$parts" | tail -n1)
 
+
+    searchParts=$(echo "$searchDir" | sed 's/?/\n/1')
+    mods=$(echo "$searchParts" | tail -n1)
+    searchDir=$(echo "$searchParts" | head -1)
+
     searchDir=$(echo "$searchDir" | sed s:~:$HOME:g)
 
-    files=$(ls -d -1 $searchDir)
+    if [[ "$mods" == *"r"* ]]; then
+        files=$(ls -dr -1 $searchDir)
+    else
+        files=$(ls -d -1 $searchDir)
+    fi
     
     if [ "$count" -eq "2" ]; then
         cmd=$(echo "$parts" | head -1)
