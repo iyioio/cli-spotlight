@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SHELL='/bin/bash'
+
 list=""
 
 for var in "$@"
@@ -23,7 +25,10 @@ do
 done
 
 
-option=$(echo "$list" | fzf --reverse)
+previewPath="$(dirname "$0")/preview.sh"
+
+
+option=$(echo "$list" | fzf --reverse --preview "$previewPath {}")
 
 if [ "$option" == "" ]; then
     exit 1
