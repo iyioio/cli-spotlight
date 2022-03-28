@@ -43,6 +43,11 @@ if [ "$option" == "" ]; then
     exit 1
 fi
 
+preCmd=''
+if [ -f "$HOME/.config/cli-spotlight/cli-spotlight-source.sh" ]; then
+    preCmd='. "$HOME/.config/cli-spotlight/cli-spotlight-source.sh" && '
+fi
+
 parts=$(echo "$option" | sed 's/\]\ /\n/1')
 count=$(echo "$parts" | wc -l)
 
@@ -52,14 +57,14 @@ if [ "$count" -eq "2" ]; then
     argPath=$(echo "$parts" | tail -n1)
 
     if [ "$cmd" == "shell" ]; then
-        echo "bash --login -c \"$argPath\""
-        bash --login -c "$argPath"
+        echo "bash --login -c \"$preCmd$argPath\""
+        bash --login -c "$preCmd$argPath"
     else
-        echo "bash --login -c \"$cmd '$argPath'\""
-        bash --login -c "$cmd '$argPath'"
+        echo "bash --login -c \"$preCmd$cmd '$argPath'\""
+        bash --login -c "$preCmd$cmd '$argPath'"
     fi
     
 else
-    echo "open \"$option\""
-    open "$option"
+    echo "open \"$preCmd$option\""
+    open "$preCmd$option"
 fi
